@@ -1,0 +1,8 @@
+.DS_Store
+DEVREADME.md
+notes.js
+mvm-api.json
+new-api.json
+artwork.json
+archive/*
+.env
