@@ -1,14 +1,12 @@
 # Matthew via Music - Discography Track and Album Search
 
 
-
-
 ## Python command line program to extract json data and output a new data file with selected fields.
 
 RUN:
 
 ```
-python3 extractor.py
+python3 extractor.py to filter json fields into new file.
 ```
 
 ### and follow prompts
@@ -20,9 +18,10 @@ python3 extractor.py
 RUN:
 
 ```
-python3 replacer.py
+python3 replacer.py to add or replace json fields in existing data file.
 ```
 
 ### and follow prompts
 
 ## `data.json` will be updated in the current directory unless an alternate file is selected.
+
