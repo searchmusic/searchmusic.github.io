@@ -1,4 +1,4 @@
-base_file = "data.json"
+base_file = "db.json"
 
 import json
 
@@ -15,9 +15,9 @@ def update_artwork_url(json_file):
 
             user_input = input(f"Enter a new string for 'artworkUrl' for albumName '{album_name_to_edit}': ")
 
-            for item in data:
-                if 'albumName' in item and item['albumName'] == album_name_to_edit:
-                    item['artworkUrl'] = user_input
+            for track in data['tracks']:
+                if 'albumName' in track and track['albumName'] == album_name_to_edit:
+                    track['artworkUrl'] = user_input
 
             with open(json_file, 'w') as file:
                 json.dump(data, file, indent=2)
