@@ -1,4 +1,4 @@
-# Matthew via Music - (Discography Track and Album and Artwork Search)
+# Matthew via Music - (Discography Track, Album and Artwork Search)
 
 [LIVE SITE](https://searchmusic.github.io/)
 
