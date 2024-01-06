@@ -1,27 +1,6 @@
 # Matthew via Music - Discography Track and Album Search
 
 
-## Python command line program to extract json data and output a new data file with selected fields.
-
-RUN:
-
-```
-python3 extractor.py to filter json fields into new file.
-```
-
-### and follow prompts
-
-## `<yourData>.json` will be generated and saved to current directory.
-
-## Python command line program to replace json data and in an existing file.
-
-RUN:
-
-```
-python3 replacer.py to add or replace json fields in existing data file.
-```
-
-### and follow prompts
-
-## `data.json` will be updated in the current directory unless an alternate file is selected.
+![PREVIEW](preview.png)
+[API](https://mvmapi.olk1.com/tracks)
 
