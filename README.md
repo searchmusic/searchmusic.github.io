@@ -1,4 +1,4 @@
-# Matthew via Music - Discography Track and Album Search
+# Matthew via Music - (Discography Track and Album and Artwork Search)
 
 
 ![PREVIEW](preview.png)
