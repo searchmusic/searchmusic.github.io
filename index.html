@@ -11,6 +11,9 @@
     html {
       scrollbar-gutter: stable;
     }
+    label{
+      user-select: none;
+    }
   </style>
 </head>
 <body>
@@ -18,14 +21,20 @@
 <div class="bg-gray-100 min-h-screen flex justify-center">
   <!-- Main app container -->
   <div id="app" class="max-w-[400px] container mx-auto px-4 py-6 bg-white rounded shadow">
-    <input 
-      type="text" 
-      id="search" 
-      placeholder="Search for a track..." 
-      class="sticky top-6 w-full p-2 border rounded mb-4 focus:outline-none focus:ring focus:ring-blue-300"
-    />
-    
-    
+    <div class="sticky top-6 ">
+      <label id="hiddenInAlbumView" class="bg-white flex justify-end items-center mb-4">
+        <input type="checkbox" id="sort-toggle" class="mr-2">
+        <span id="sort-order"></span>
+      </label>
+      
+      <input 
+        type="text" 
+        id="search" 
+        placeholder="Search for a track..." 
+        class="w-full p-2 border rounded mb-4 focus:outline-none focus:ring focus:ring-blue-300"
+      />
+    </div>
+
     <!-- <button 
       id="reset-btn" 
       class="w-full mb-4 p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
@@ -47,8 +56,12 @@ const fetchAndRenderTracks = async () => {
     const response = await fetch('https://mvmapi.olk1.com/tracks'); // Replace 'api' with your actual API URL
     const data = await response.json();
 
+    // all tracks
+    let isSortedAlphabetically = false;
+
     // Assume data is an array of objects with `trackName`, `albumName`, and `trackNumber`
-    const sortedTracks = data.sort((a, b) => a.trackName.localeCompare(b.trackName));
+    let originalData = [...data]; // Chronological (as returned by API)
+    let sortedAlphabetically = [...data].sort((a, b) => a.trackName.localeCompare(b.trackName));
 
     // Group tracks by album
     const albumGroups = data.reduce((albums, track) => {
@@ -62,7 +75,11 @@ const fetchAndRenderTracks = async () => {
     // Get references to DOM elements
     const musicList = document.getElementById('music-list');
     const searchInput = document.getElementById('search');
-    // const resetBtn = document.getElementById('reset-btn');
+    const sortOrderCheckboxLabelSpan = document.getElementById('sort-order');
+    const hiddenInAlbumView = document.getElementById('hiddenInAlbumView');
+    const sortToggle = document.getElementById('sort-toggle');
+
+    sortOrderCheckboxLabelSpan.innerText = "Sort Alphabetically";
 
     // Render the sorted list of tracks
     const renderTracks = (tracks) => {
@@ -84,8 +101,28 @@ const fetchAndRenderTracks = async () => {
         .join('');
     };
 
+    // Initial render (chronological)
+    renderTracks(originalData);
+
+    // checkbox to toggle all tracks view
+    sortToggle.addEventListener('change', (e) => {
+      isSortedAlphabetically = e.target.checked;
+      const tracksToRender = isSortedAlphabetically ? sortedAlphabetically : originalData;
+      sortOrderCheckboxLabelSpan.innerText = isSortedAlphabetically 
+        ? "Sort Chronologically" 
+        : "Sort Alphabetically";
+      renderTracks(tracksToRender);
+    });
+
+    // 
+    // 
+    // 
+    // 
+    // view when user clicks album link
+    // 
     // Render tracks for a specific album
     const renderAlbumTracks = (albumName) => {
+      hiddenInAlbumView.classList.add("hidden");
       const albumTracks = albumGroups[albumName] || [];
       let isSortedByTrackNumber = true;
 
@@ -101,7 +138,7 @@ const fetchAndRenderTracks = async () => {
         musicList.innerHTML = `
           <h2 class="text-xl font-bold mb-4">Tracks in Album: ${albumName}</h2>
           <label class="flex items-center mb-4">
-            <input type="checkbox" id="sort-toggle" class="mr-2"> 
+            <input type="checkbox" id="sort-toggle-album-view" class="mr-2"> 
             Sort alphabetically
           </label>
           ${sortedAlbumTracks
@@ -123,26 +160,29 @@ const fetchAndRenderTracks = async () => {
 
         // Add event listener to the back button
         document.getElementById('back-btn').addEventListener('click', () => {
-          renderTracks(sortedTracks);
+          const tracksToRender = isSortedAlphabetically ? sortedAlphabetically : originalData;
+          renderTracks(tracksToRender);
+          hiddenInAlbumView.classList.remove("hidden");
         });
 
+
         // Add event listener for sorting toggle
-        const sortToggle = document.getElementById('sort-toggle');
-        sortToggle.checked = !isSortedByTrackNumber; // Reflect the current sorting state
+        const sortToggleAlbumView = document.getElementById('sort-toggle-album-view');
+        sortToggleAlbumView.checked = !isSortedByTrackNumber; // Reflect the current sorting state
 
         // Toggle sorting order when checkbox changes
-        sortToggle.addEventListener('change', (e) => {
+        sortToggleAlbumView.addEventListener('change', (e) => {
           isSortedByTrackNumber = !e.target.checked;
           render();  // Re-render with updated sorting
         });
 
         // Add event listener for keyboard interaction with the checkbox (Enter key)
-        sortToggle.addEventListener('keydown', (e) => {
+        sortToggleAlbumView.addEventListener('keydown', (e) => {
           if (e.key === 'Enter') {
             // Toggle the checkbox state when Enter is pressed
-            const sortToggle = e.target;
-            sortToggle.checked = !sortToggle.checked;  // Toggle the checkbox state
-            isSortedByTrackNumber = !sortToggle.checked; // Update sorting state
+            const sortToggleAlbumView = e.target;
+            sortToggleAlbumView.checked = !sortToggleAlbumView.checked;  // Toggle the checkbox state
+            isSortedByTrackNumber = !sortToggleAlbumView.checked; // Update sorting state
             render();  // Re-render the album tracks with the new sorting option
           }
         });
@@ -151,23 +191,17 @@ const fetchAndRenderTracks = async () => {
       render();
     };
 
-    // Initial render
-    renderTracks(sortedTracks);
 
     // Add search functionality
-    searchInput.addEventListener('input', (e) => {
+   searchInput.addEventListener('input', (e) => {
       const query = e.target.value.toLowerCase();
-      const filteredTracks = sortedTracks.filter((track) =>
+      const activeTracks = isSortedAlphabetically ? sortedAlphabetically : originalData;
+      const filteredTracks = activeTracks.filter((track) =>
         track.trackName.toLowerCase().includes(query)
       );
       renderTracks(filteredTracks);
     });
 
-    // Add reset functionality
-    // resetBtn.addEventListener('click', () => {
-    //   searchInput.value = '';
-    //   renderTracks(sortedTracks);
-    // });
 
     // Add event listener for album links
     musicList.addEventListener('click', (e) => {
