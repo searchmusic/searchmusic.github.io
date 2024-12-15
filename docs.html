@@ -58,6 +58,11 @@ html{
       padding: 10px;
       border-radius: 3px;
     }
+    @media screen and (max-width: 480px){
+      .hidden-on-mobile{
+        display: none;
+      }
+    }
   </style>
 
 </head>
@@ -73,9 +78,9 @@ html{
   <h2>Base URLs</h2>
   <p>These are the base URLs for the API:</p>
   <ul>
-    <li><strong>Tracks:</strong> <code>https://mvmapi.olk1.com/tracks</code></li>
-    <li><strong>Albums:</strong> <code>https://mvmapi.olk1.com/albums</code></li>
-    <li><strong>Artwork:</strong> <code>https://mvmapi.olk1.com/artwork</code></li>
+    <li><strong>Tracks:</strong> <code><span class="hidden-on-mobile">https://</span>mvmapi.olk1.com/tracks</code></li>
+    <li><strong>Albums:</strong> <code><span class="hidden-on-mobile">https://</span>mvmapi.olk1.com/albums</code></li>
+    <li><strong>Artwork:</strong> <code><span class="hidden-on-mobile">https://</span>mvmapi.olk1.com/artwork</code></li>
   </ul>
 
   <h2>API Endpoints</h2>
@@ -111,9 +116,9 @@ html{
 
     <h4>Example Requests:</h4>
     <ul>
-      <li><code>GET https://mvmapi.olk1.com/tracks</code></li>
-      <li><code>GET https://mvmapi.olk1.com/tracks/1</code> (Fetch specific track by ID)</li>
-      <li><code>GET https://mvmapi.olk1.com/tracks?_limit=50</code> (Limit results to 50)</li>
+      <li><code>GET <span class="hidden-on-mobile">https://</span>mvmapi.olk1.com/tracks</code></li>
+      <li><code>GET <span class="hidden-on-mobile">https://</span>mvmapi.olk1.com/tracks/1</code> (Fetch specific track by ID)</li>
+      <li><code>GET <span class="hidden-on-mobile">https://</span>mvmapi.olk1.com/tracks?_limit=50</code> (Limit results to 50)</li>
     </ul>
   </div>
 
@@ -142,9 +147,9 @@ html{
 
     <h4>Example Requests:</h4>
     <ul>
-      <li><code>GET https://mvmapi.olk1.com/albums</code></li>
-      <li><code>GET https://mvmapi.olk1.com/albums/5</code> (Fetch specific album by ID)</li>
-      <li><code>GET https://mvmapi.olk1.com/albums?_limit=10</code> (Limit results to 10)</li>
+      <li><code>GET <span class="hidden-on-mobile">https://</span>mvmapi.olk1.com/albums</code></li>
+      <li><code>GET <span class="hidden-on-mobile">https://</span>mvmapi.olk1.com/albums/5</code> (Fetch specific album by ID)</li>
+      <li><code>GET <span class="hidden-on-mobile">https://</span>mvmapi.olk1.com/albums?_limit=10</code> (Limit results to 10)</li>
     </ul>
   </div>
 
@@ -170,9 +175,9 @@ html{
 
     <h4>Example Requests:</h4>
     <ul>
-      <li><code>GET https://mvmapi.olk1.com/artwork</code></li>
-      <li><code>GET https://mvmapi.olk1.com/artwork/10</code> (Fetch specific artwork by ID)</li>
-      <li><code>GET https://mvmapi.olk1.com/artwork?_limit=5</code> (Limit results to 5)</li>
+      <li><code>GET <span class="hidden-on-mobile">https://</span>mvmapi.olk1.com/artwork</code></li>
+      <li><code>GET <span class="hidden-on-mobile">https://</span>mvmapi.olk1.com/artwork/10</code> (Fetch specific artwork by ID)</li>
+      <li><code>GET <span class="hidden-on-mobile">https://</span>mvmapi.olk1.com/artwork?_limit=5</code> (Limit results to 5)</li>
     </ul>
   </div>
 
