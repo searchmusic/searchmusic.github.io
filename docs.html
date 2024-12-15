@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Catalogue - API Documentation</title>
+  <link rel='icon' href='data:;base64,='>
+<style>
+html{
+  font-size: 130%;
+}
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    code {
+      background-color: #f4f4f4;
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+    pre {
+      background-color: #f4f4f4;
+      padding: 10px;
+      border-radius: 3px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    .container{
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .endpoint {
+      background-color: #f9f9f9;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .endpoint h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #333;
+    }
+    .endpoint .description {
+      font-style: italic;
+      color: #777;
+    }
+    .endpoint .params, .endpoint .response {
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+    .example {
+      background-color: #eef;
+      padding: 10px;
+      border-radius: 3px;
+    }
+  </style>
+
+</head>
+<body>
+
+<div class="container">
+
+<a class="text-xl" href="/">Home</a>
+
+
+  <h1>API Documentation</h1>
+
+  <h2>Base URLs</h2>
+  <p>These are the base URLs for the API:</p>
+  <ul>
+    <li><strong>Tracks:</strong> <code>https://mvmapi.olk1.com/tracks</code></li>
+    <li><strong>Albums:</strong> <code>https://mvmapi.olk1.com/albums</code></li>
+    <li><strong>Artwork:</strong> <code>https://mvmapi.olk1.com/artwork</code></li>
+  </ul>
+
+  <h2>API Endpoints</h2>
+
+  <div class="endpoint">
+    <h3>1. /tracks</h3>
+    <p class="description">Fetch track information from the API.</p>
+    
+    <div class="params">
+      <strong>Query Parameters:</strong>
+      <ul>
+        <li><code>?_limit=<em>number</em></code> (Optional) Limits the number of results returned.</li>
+      </ul>
+    </div>
+
+    <div class="response">
+      <strong>Response Fields:</strong>
+      <ul>
+        <li><code>id</code> (Integer): Unique identifier for the track.</li>
+        <li><code>trackName</code> (String): The name of the track.</li>
+        <li><code>albumName</code> (String): The name of the album the track belongs to.</li>
+        <li><code>artistName</code> (String): The name of the artist.</li>
+        <li><code>trackNumber</code> (Integer): The track number on the album.</li>
+        <li><code>releaseYear</code> (Integer): The release year of the track.</li>
+        <li><code>trackDuration</code> (String): The duration of the track (in a time format like <code>mm:ss</code>).</li>
+        <li><code>albumDuration</code> (String): The total duration of the album.</li>
+        <li><code>artworkUrl</code> (String): URL of the track's artwork image.</li>
+        <li><code>youtubeUrl</code> (String): URL of the track's music video on YouTube.</li>
+        <li><code>youtubePlaylistUrl</code> (String): URL of the playlist the track is part of on YouTube.</li>
+        <li><code>genre</code> (String): Genre of the track.</li>
+      </ul>
+    </div>
+
+    <h4>Example Requests:</h4>
+    <ul>
+      <li><code>GET https://mvmapi.olk1.com/tracks</code></li>
+      <li><code>GET https://mvmapi.olk1.com/tracks/1</code> (Fetch specific track by ID)</li>
+      <li><code>GET https://mvmapi.olk1.com/tracks?_limit=50</code> (Limit results to 50)</li>
+    </ul>
+  </div>
+
+  <div class="endpoint">
+    <h3>2. /albums</h3>
+    <p class="description">Fetch album information from the API.</p>
+
+    <div class="params">
+      <strong>Query Parameters:</strong>
+      <ul>
+        <li><code>?_limit=<em>number</em></code> (Optional) Limits the number of results returned.</li>
+      </ul>
+    </div>
+
+    <div class="response">
+      <strong>Response Fields:</strong>
+      <ul>
+        <li><code>id</code> (Integer): Unique identifier for the album.</li>
+        <li><code>artist</code> (String): Name of the artist who created the album.</li>
+        <li><code>title</code> (String): The title of the album.</li>
+        <li><code>year</code> (Integer): The release year of the album.</li>
+        <li><code>artwork</code> (String): URL of the album artwork.</li>
+        <li><code>youtubeUrl</code> (String): URL to the album’s music videos or playlist on YouTube.</li>
+      </ul>
+    </div>
+
+    <h4>Example Requests:</h4>
+    <ul>
+      <li><code>GET https://mvmapi.olk1.com/albums</code></li>
+      <li><code>GET https://mvmapi.olk1.com/albums/5</code> (Fetch specific album by ID)</li>
+      <li><code>GET https://mvmapi.olk1.com/albums?_limit=10</code> (Limit results to 10)</li>
+    </ul>
+  </div>
+
+  <div class="endpoint">
+    <h3>3. /artwork</h3>
+    <p class="description">Fetch artwork information from the API.</p>
+
+    <div class="params">
+      <strong>Query Parameters:</strong>
+      <ul>
+        <li><code>?_limit=<em>number</em></code> (Optional) Limits the number of results returned.</li>
+      </ul>
+    </div>
+
+    <div class="response">
+      <strong>Response Fields:</strong>
+      <ul>
+        <li><code>id</code> (Integer): Unique identifier for the artwork.</li>
+        <li><code>artwork</code> (String): URL to the image of the artwork.</li>
+        <li><code>youtubeUrl</code> (String): YouTube URL for the artwork, if available.</li>
+      </ul>
+    </div>
+
+    <h4>Example Requests:</h4>
+    <ul>
+      <li><code>GET https://mvmapi.olk1.com/artwork</code></li>
+      <li><code>GET https://mvmapi.olk1.com/artwork/10</code> (Fetch specific artwork by ID)</li>
+      <li><code>GET https://mvmapi.olk1.com/artwork?_limit=5</code> (Limit results to 5)</li>
+    </ul>
+  </div>
+
+</body>
+</html>
+
+  </div>
+</body>
+</html>
