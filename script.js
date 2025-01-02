@@ -23,12 +23,12 @@
 
     const fetchApiData = async () => {
       try {
-        const response = await fetch('https://mvmapi.olk1.com/tracks?_limit=500');
+        const response = await fetch('https://mvmapi.olk1.com/tracks');
         if (!response.ok) {
           throw new Error(`Error: ${response.status}`);
         }
         const data = await response.json();
-        return data.reverse(); // Reverse the data here
+        return data.reverse(); // reverse chronological sort
       } catch (error) {
         console.error('Failed to fetch data:', error);
         return [];
