@@ -235,9 +235,9 @@ const renderStoredData = () => {
 
     // Display the counts
     storedData.innerHTML = `
-      <p class="bg-gray-200 p-2" id="allCount">All</p>
-      <p class="bg-green-200 p-2" id="upCount">Up: <strong>${upCount}</strong></p>
-      <p class="bg-red-200 p-2" id="downCount">Down: <strong>${downCount}</strong></p>`;
+      <p class="cursor-pointer bg-gray-200 p-2" id="allCount">All</p>
+      <p class="cursor-pointer bg-green-200 p-2" id="upCount">Up: <strong>${upCount}</strong></p>
+      <p class="cursor-pointer bg-red-200 p-2" id="downCount">Down: <strong>${downCount}</strong></p>`;
 
     // Reassign global variables to the newly created DOM elements
     allCountElement = document.getElementById('allCount');
