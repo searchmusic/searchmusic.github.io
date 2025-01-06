@@ -1,5 +1,8 @@
 const api = 'https://mvmapi.olk1.com/tracks';
 
+import { downloadPngButtons } from './buttons.js';
+import { renderColorBoxes } from './colors.js';
+
 const trackList = document.getElementById('trackList');
 let isReversed = false; // State to track toggle for reverse order
 
@@ -36,7 +39,6 @@ const displayData = async (filterRange = null) => {
 
   data.forEach(item => { 
     const listItem = document.createElement('section');
-    listItem.classList.add('track-item');
 
     const formatTrackDuration = (duration) => { 
       const durationInMinutes = parseFloat(duration); 
@@ -57,6 +59,7 @@ const displayData = async (filterRange = null) => {
 
     // Use listItem directly without wrapping it in another <div> with track-item
     listItem.innerHTML = `
+    <div class="track-item w-[1280px] h-[720px]">
       <p class="id"><span>[Catalogue ID]</span><span>&rarr;${item.id}</span></p>
       <p class="trackName worn-text"><span>TrackName</span><span>${item.trackName}</span></p>
       <p class="trackDuration"><span>Track Duration</span><span>${formattedTrackDuration}</span></p>
@@ -65,10 +68,22 @@ const displayData = async (filterRange = null) => {
       <p class="albumDuration"><span>Album Duration</span><span>${formattedAlbumDuration}</span></p>
       <p class="releaseYear"><span>First Released:</span><span>${item.releaseYear}</span></p>
       <p class="genre"><span>Genre</span><span>${item.genre}</span></p>
+
+      <div class="color-container"></div>
+      <button class="download-btn">Download PNG</button> 
+      <button class="bg-and-white-text-btn">PNG White Text</button> 
+      <button class="remove-bg-btn">PNG No Background</button> 
+      <button class="white-text-btn">No BG / White Text</button> 
+    </div>
     `;
     
     trackList.appendChild(listItem); 
-  
+
+    // download png buttons that appear on hover (see style.css)
+    downloadPngButtons(listItem, item);
+    const colorContainer = document.querySelector('.color-container');
+    renderColorBoxes(colorContainer);
+
     // Position paragraphs inside the listItem
     const paragraphs = listItem.querySelectorAll('p');
     const containerWidth = listItem.clientWidth;

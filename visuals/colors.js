@@ -7,7 +7,7 @@ const shuffleArray = (array) => {
 };
 
 // Function to render the color boxes.
-const renderColorBoxes = (container) => {
+export const renderColorBoxes = (container) => {
   // Colors for the color boxes.
   const colors = [
     '#ff0000',
