@@ -59,7 +59,7 @@ const displayData = async (filterRange = null) => {
 
     // Use listItem directly without wrapping it in another <div> with track-item
     listItem.innerHTML = `
-    <div class="track-item w-[1280px] h-[720px]">
+    <div class="track-item xl:w-[1280px] xl:h-[720px]">
       <p class="id"><span>[Catalogue ID]</span><span>&rarr;${item.id}</span></p>
       <p class="trackName worn-text"><span>TrackName</span><span>${item.trackName}</span></p>
       <p class="trackDuration"><span>Track Duration</span><span>${formattedTrackDuration}</span></p>
