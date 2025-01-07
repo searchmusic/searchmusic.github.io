@@ -27,10 +27,10 @@ export const downloadPngButtons = (listItem, item) => {
         filter: node => !excludeButtons.includes(node),
         width: 1280,
         height: 720,
-        style: {
-          transform: 'scale(1)',
-          transformOrigin: 'center',
-        },
+        // style: {
+        //   transform: 'scale(1)',
+        //   transformOrigin: 'center',
+        // },
       });
 
       // Trigger the download
