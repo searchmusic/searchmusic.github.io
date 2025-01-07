@@ -256,7 +256,8 @@ body {
 .bg-and-white-text-btn {
   background: transparent;
   color: transparent;
-  padding: 4px 2px;
+  padding: 8px 4px;
+  cursor: pointer;
 }
 
 .track-item:hover .download-btn,
@@ -265,4 +266,5 @@ body {
 .track-item:hover .white-text-btn {
   background: #000;
   color: white;
+  cursor: pointer;
 }
