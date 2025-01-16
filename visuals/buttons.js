@@ -109,7 +109,7 @@ if (bgAndBlackTitleBlackTextBtn) {
   bgAndBlackTitleBlackTextBtn.addEventListener('click', async () => {
     const originalTrackNameColor = trackName.style.color;
 
-    trackName.style.color = 'black'; // Set title to black
+    trackName.style.color = '#282a27'; // Set title to black
 
     await downloadImage(
       trackItem, buttons,
@@ -127,7 +127,7 @@ if (bgAndBlackTitleWhiteTextBtn) {
     const originalTrackNameColor = trackName.style.color;
     const originalTrackItemColor = trackItem.style.color;
 
-    trackName.style.color = 'black'; // Set title to black
+    trackName.style.color = '#282a27'; // Set title to black
     trackItem.style.color = 'white'; // Set other text to white
 
     await downloadImage(
@@ -151,7 +151,7 @@ if (noBgAndBlackTitleBlackTextBtn) {
 
     // Apply the styles
     trackItem.style.backgroundImage = 'none'; // Remove background
-    trackName.style.color = 'black'; // Set title to black
+    trackName.style.color = '#282a27'; // Set title to black
 
     await downloadImage(
       trackItem, buttons,
@@ -174,7 +174,7 @@ if (noBgAndBlackTitleWhiteTextBtn) {
 
     // Apply the styles
     trackItem.style.backgroundImage = 'none'; // Remove background
-    trackName.style.color = 'black'; // Set title to black
+    trackName.style.color = '#282a27'; // Set title to black
     trackItem.style.color = 'white'; // Set other text to white
 
     await downloadImage(
