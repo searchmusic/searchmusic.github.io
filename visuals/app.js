@@ -61,7 +61,7 @@ const displayData = async (filterRange = null) => {
     listItem.innerHTML = `
     <div class="track-item xl:w-[1280px] xl:h-[720px]">
       <p class="id"><span>[Catalogue ID]</span><span>&rarr;${item.id}</span></p>
-      <p class="trackName worn-text"><span>TrackName</span><span>${item.trackName}</span></p>
+      <p class="trackName"><span>TrackName</span><span class="title">${item.trackName}</span></p>
       <p class="trackDuration"><span>Track Duration</span><span>${formattedTrackDuration}</span></p>
       <p class="trackNumber"><span>Sequence</span>#<span>${item.trackNumber}</span></p>
       <p class="albumName"><span>Album Title</span><span>${item.albumName}</span></p>
@@ -69,11 +69,19 @@ const displayData = async (filterRange = null) => {
       <p class="releaseYear"><span>First Released:</span><span>${item.releaseYear}</span></p>
       <p class="genre"><span>Genre</span><span>${item.genre}</span></p>
 
-      <div class="color-container"></div>
-      <button class="download-btn">Download PNG</button> 
-      <button class="bg-and-white-text-btn">PNG White Text</button> 
-      <button class="remove-bg-btn">PNG No Background</button> 
-      <button class="white-text-btn">No BG / White Text</button> 
+      <div class="color-container"><!--  --></div>
+      
+      <div class="flex flex-wrap justify-start gap-1">
+        <button class="download-btn">Download PNG</button> 
+        <button class="bg-and-white-text-btn">PNG White Text</button> 
+        <button class="remove-bg-btn">PNG No Background</button> 
+        <button class="white-text-btn">No BG / White Text</button> 
+        <button class="bg-black-title-black-text-btn">Black Title / Black Text</button> 
+        <button class="bg-black-title-white-text-btn">Black Title / White Text</button> 
+        <button class="no-bg-black-title-black-text-btn">No BG Black Title</button> 
+        <button class="no-bg-black-title-white-text-btn">No BG Black Title / White Text</button> 
+      </div>
+      
     </div>
     `;
     

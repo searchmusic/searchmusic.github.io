@@ -249,21 +249,46 @@ body {
   }
 }
 
-.download-btn,
-.remove-bg-btn,
-.white-text-btn,
-.bg-and-white-text-btn {
-  background: transparent;
-  color: transparent;
-  padding: 8px 4px;
-  cursor: pointer;
-}
 
-.track-item:hover .download-btn,
-.track-item:hover .bg-and-white-text-btn,
-.track-item:hover .remove-bg-btn,
-.track-item:hover .white-text-btn {
-  background: #000;
-  color: white;
-  cursor: pointer;
+/* hover download PNG buttons */
+/* hacky hide on small screens */
+  .download-btn,
+  .remove-bg-btn,
+  .white-text-btn,
+  .bg-and-white-text-btn, 
+  .bg-black-title-black-text-btn, 
+  .bg-black-title-white-text-btn, 
+  .no-bg-black-title-black-text-btn, 
+  .no-bg-black-title-white-text-btn {
+    background: transparent;
+    color: transparent;
+  }
+
+@media (min-width: 767px) {
+  .download-btn,
+  .remove-bg-btn,
+  .white-text-btn,
+  .bg-and-white-text-btn, 
+  .bg-black-title-black-text-btn, 
+  .bg-black-title-white-text-btn,
+  .no-bg-black-title-black-text-btn, 
+  .no-bg-black-title-white-text-btn {
+    background: transparent;
+    color: transparent;
+    padding: 8px 4px;
+    cursor: pointer;
+  }
+
+  .track-item:hover .download-btn,
+  .track-item:hover .bg-and-white-text-btn,
+  .track-item:hover .remove-bg-btn,
+  .track-item:hover .white-text-btn, 
+  .track-item:hover .bg-black-title-black-text-btn, 
+  .track-item:hover .bg-black-title-white-text-btn,
+  .track-item:hover .no-bg-black-title-black-text-btn,
+  .track-item:hover .no-bg-black-title-white-text-btn {
+    background: #000;
+    color: white;
+    cursor: pointer;
+  }
 }
