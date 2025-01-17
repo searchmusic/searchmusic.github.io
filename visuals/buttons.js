@@ -25,7 +25,7 @@ export const downloadPngButtons = (listItem, item) => {
 
   const downloadImage = async (trackItem, excludeButtons, fileName, additionalReset = () => {}) => {
     // Temporarily adjust styles (all button options)
-    paragraphs.forEach(p => (p.style.filter = 'blur(0.2px)'));
+    // paragraphs.forEach(p => (p.style.filter = 'blur(0.2px)'));
     colorContainer.style.display = 'none';
     trackItem.style.border = '0px dashed #888';
 

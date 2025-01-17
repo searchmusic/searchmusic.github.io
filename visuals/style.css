@@ -1,8 +1,8 @@
 :root {
-  --trackNameSize: 10rem;
+  --trackNameSize: 5rem;
   --trackDurationSize: 7rem;
   --albumDurationSize: 6rem;
-  --albumNameSize: 2rem;
+  --albumNameSize: 1.5rem;
   --genreSize: 1.3rem;
 }
 
@@ -30,7 +30,8 @@ body {
   width: fit-content;
   height: fit-content;
   margin: 10px;
-  filter: blur(0.6px); /* blur(0.2px) used in JS for PNG download */
+  /* filter: blur(0.6px);  */
+  /* blur(0.2px) used in JS for PNG download */
   padding: 20px;
 }
 
