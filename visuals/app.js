@@ -40,32 +40,15 @@ const displayData = async (filterRange = null) => {
   data.forEach(item => { 
     const listItem = document.createElement('section');
 
-    const formatTrackDuration = (duration) => { 
-      const durationInMinutes = parseFloat(duration); 
-      const minutes = Math.floor(durationInMinutes); 
-      const seconds = Math.round((durationInMinutes - minutes) * 60); 
-      return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-    };   
-    
-    const formatAlbumDuration = (duration) => { 
-      const durationInMinutes = parseFloat(duration); 
-      const minutes = Math.floor(durationInMinutes); 
-      const seconds = Math.round((durationInMinutes - minutes) * 60);
-      return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;    
-    };
-
-    const formattedTrackDuration = formatTrackDuration(item.trackDuration);  
-    const formattedAlbumDuration = formatAlbumDuration(item.albumDuration);    
-
     // Use listItem directly without wrapping it in another <div> with track-item
     listItem.innerHTML = `
     <div class="track-item xl:w-[1280px] xl:h-[720px]">
       <p class="id"><span>[Catalogue ID]</span><span>&rarr;${item.id}</span></p>
       <p class="trackName"><span>TrackName</span><span class="title">${item.trackName}</span></p>
-      <p class="trackDuration"><span>Track Duration</span><span>${formattedTrackDuration}</span></p>
+      <p class="trackDuration"><span>Track Duration</span><span>${item.trackDuration.toFixed(2)}</span></p>
       <p class="trackNumber"><span>Sequence</span>#<span>${item.trackNumber}</span></p>
       <p class="albumName"><span>Album Title</span><span>${item.albumName}</span></p>
-      <p class="albumDuration"><span>Album Duration</span><span>${formattedAlbumDuration}</span></p>
+      <p class="albumDuration"><span>Album Duration</span><span>${item.albumDuration.toFixed(2)}</span></p>
       <p class="releaseYear"><span>First Released:</span><span>${item.releaseYear}</span></p>
       <p class="genre"><span>Genre</span><span>${item.genre}</span></p>
 

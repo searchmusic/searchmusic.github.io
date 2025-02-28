@@ -314,11 +314,11 @@ const renderTracks = (tracks) => {
     details.appendChild(year);
 
     const trackDuration = document.createElement('p');
-    trackDuration.innerHTML = `<strong>Track Duration:</strong> ${track.trackDuration.toFixed(2)}`;
+    trackDuration.innerHTML = `<strong>Track Duration:</strong> ${track.trackDuration}`;
     details.appendChild(trackDuration);
 
     const albumDuration = document.createElement('p');
-    albumDuration.innerHTML = `<strong>Album Duration:</strong> ${track.albumDuration.toFixed(2)}`;
+    albumDuration.innerHTML = `<strong>Album Duration:</strong> ${track.albumDuration}`;
     details.appendChild(albumDuration);
 
     details.className = 'relative p-5 mt-0.5';
